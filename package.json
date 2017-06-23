@@ -15,7 +15,7 @@
     "verify": "npm run check && npm test",
     "changelog": "changelogx -f markdown -o ./changelog.md",
     "do-changelog": "npm run changelog && git add ./changelog.md && git commit -m 'DOC: Generate changelog'",
-    "install-hooks": "prepush install && changelogx install-hook && ./bin/cli.js install",
+    "install-hooks": "prepush install && changelogx install-hook && node ./bin/cli.js install",
     "pre-v": "npm run verify",
     "post-v": "npm run do-changelog && git push --no-verify && git push --tags --no-verify",
     "bump-major": "npm run pre-v && npm version major -m 'BLD: Release v%s' && npm run post-v",

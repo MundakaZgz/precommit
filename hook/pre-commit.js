@@ -206,6 +206,9 @@ var spawnCmd = function ( cmd ) {
   var args = cmd.split( ' ' );
   var command = args.shift();
 
+  // Fix Issue #5 https://github.com/royriojas/precommit/issues/5
+  command = command == 'npm' && /^win/.test(process.platform) ? 'npm.cmd' : command;
+
   return new Promise( function ( resolve, reject ) {
 
     var cp = spawn( command, args, { stdio: 'inherit' } );
